@@ -1,0 +1,1296 @@
+{
+ "distributions": [
+  {
+   "id": "norm",
+   "files": [
+    "norm.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Normal distribution",
+    "ja": "正規分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Normal_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/正規分布"
+   },
+   "formula": "f(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^{2}}}\\exp\\!\\left(-\\frac{(x-\\mu)^2}{2\\sigma^2} \\right)",
+   "mean_str": "\\mu",
+   "variance_str": "\\sigma^2",
+   "range": {
+    "min": -100.0,
+    "max": 100.0,
+    "default": [
+     -10.0,
+     10.0
+    ],
+    "step": 1
+   },
+   "params": [
+    {
+     "name": "mean",
+     "label": {
+      "en": "Mean",
+      "ja": "期待値"
+     },
+     "symbol": "\\mu",
+     "min": -50,
+     "max": 50,
+     "default": 0.0,
+     "step": 5
+    },
+    {
+     "name": "sd",
+     "label": {
+      "en": "Standard deviation",
+      "ja": "標準偏差"
+     },
+     "symbol": "\\sigma",
+     "min": 0,
+     "max": 10,
+     "default": 1.0,
+     "step": 0.5
+    }
+   ]
+  },
+  {
+   "id": "erlang",
+   "files": [
+    "erlang.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Erlang distribution",
+    "ja": "アーラン分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Erlang_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/アーラン分布"
+   },
+   "formula": "f(x; k, \\theta)=\\frac{x^{k-1}e^{-x/\\theta}}{\\theta^{k}(k-1)!} \\quad\\text{for }x,\\theta > 0",
+   "mean_str": "k\\theta",
+   "variance_str": "k\\theta^2",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "shape",
+     "label": {
+      "en": "Shape",
+      "ja": "形状"
+     },
+     "symbol": "k",
+     "min": 1,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    },
+    {
+     "name": "scale",
+     "label": {
+      "en": "Scale",
+      "ja": "尺度"
+     },
+     "symbol": "\\theta",
+     "min": 0.5,
+     "max": 19.5,
+     "default": 1.0,
+     "step": 1.0
+    }
+   ]
+  },
+  {
+   "id": "f",
+   "files": [
+    "f.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "F-distribution",
+    "ja": "F分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/F-distribution",
+    "ja": "https://ja.wikipedia.org/wiki/F分布"
+   },
+   "formula": "f(x) = \\frac{1}{\\mathrm{B}(d_1/2, d_2/2)} \\; \n  \\left(\\frac{d_1\\,x}{d_1\\,x + d_2}\\right)^{d_1/2} \\; \n  \\left(1-\\frac{d_1\\,x}{d_1\\,x + d_2}\\right)^{d_2/2} \\; x^{-1}",
+   "mean_str": "\\frac{d_2}{d_2-2}",
+   "variance_str": "\\frac{2\\,d_2^2\\,(d_1+d_2-2)}{d_1 (d_2-2)^2 (d_2-4)}",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "df1",
+     "label": {
+      "en": "Degrees of freedom",
+      "ja": "自由度"
+     },
+     "symbol": "d_1",
+     "min": 1,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    },
+    {
+     "name": "df2",
+     "label": {
+      "en": "Degrees of freedom",
+      "ja": "自由度"
+     },
+     "symbol": "d_2",
+     "min": 1,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    }
+   ]
+  },
+  {
+   "id": "ncf",
+   "files": [
+    "ncf_0.json",
+    "ncf_1.json",
+    "ncf_2.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Noncentral F-distribution",
+    "ja": "非心F分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Noncentral_F-distribution",
+    "ja": "https://en.wikipedia.org/wiki/Noncentral_F-distribution"
+   },
+   "formula": "f(x) =\\sum\\limits_{k=0}^\\infty\n  \\frac{e^{-\\lambda/2}(\\lambda/2)^k}\n  { B\\left(\\frac{\\nu_2}{2},\\frac{\\nu_1}{2}+k\\right) k!}\n  \\left(\\frac{\\nu_1}{\\nu_2}\\right)^{\\frac{\\nu_1}{2}+k}\n  \\left(\\frac{\\nu_2}{\\nu_2+\\nu_1x}\\right)\n  ^{\\frac{\\nu_1+\\nu_2}{2}+k}x^{\\nu_1/2-1+k}\n  \\ \\ \\ \\ \\mathrm{for\\ } x > 0",
+   "mean_str": "\\frac{\\nu_2(\\nu_1 + \\lambda)}{\\nu_1(\\nu_2-2)}",
+   "variance_str": "2\\frac{(\\nu_1+\\lambda)^2+(\\nu_1+2\\lambda)(\\nu_2-2)}{(\\nu_2-2)^2(\\nu_2-4)} \\left(\\frac{\\nu_2}{\\nu_1}\\right)^2",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "df1",
+     "label": {
+      "en": "Degrees of freedom",
+      "ja": "自由度"
+     },
+     "symbol": "\\nu_1",
+     "min": 1,
+     "max": 19,
+     "default": 1.0,
+     "step": 2
+    },
+    {
+     "name": "df2",
+     "label": {
+      "en": "Degrees of freedom",
+      "ja": "自由度"
+     },
+     "symbol": "\\nu_2",
+     "min": 1,
+     "max": 19,
+     "default": 1.0,
+     "step": 2
+    },
+    {
+     "name": "ncp",
+     "label": {
+      "en": "Noncentrality parameter",
+      "ja": "非中心度"
+     },
+     "symbol": "\\lambda",
+     "min": 0,
+     "max": 20,
+     "default": 0.0,
+     "step": 2
+    }
+   ]
+  },
+  {
+   "id": "chisq",
+   "files": [
+    "chisq.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Chi-squared distribution",
+    "ja": "カイ二乗分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Chi-squared_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/カイ二乗分布"
+   },
+   "formula": "f(x;k)=\\frac{(1/2)^{k/2}}{\\Gamma(k/2)} x^{k/2 - 1} e^{-x/2}\n  \\ \\ \\ \\ \\mathrm{for\\ } x > 0",
+   "mean_str": "k",
+   "variance_str": "2k",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "df",
+     "label": {
+      "en": "Degrees of freedom",
+      "ja": "自由度"
+     },
+     "symbol": "k",
+     "min": 1,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    }
+   ]
+  },
+  {
+   "id": "ncChisq",
+   "files": [
+    "ncChisq.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Noncentral chi-squared distribution",
+    "ja": "非心カイ二乗分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Noncentral_chi-squared_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/非心カイ二乗分布"
+   },
+   "formula": "f_X(x; k,\\lambda) =\n        \\sum_{i=0}^\\infty \\frac{e^{-\\lambda/2} (\\lambda/2)^i}{i!} f_{Y_{k+2i}}(x),\n        \\ \\ \\ \\ \\mathrm{for\\ } x > 0,\\ \\ Y_q \\sim\\chi^2_q",
+   "mean_str": "k+\\lambda",
+   "variance_str": "2(k+2\\lambda)",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "df",
+     "label": {
+      "en": "Degrees of freedom",
+      "ja": "自由度"
+     },
+     "symbol": "k",
+     "min": 1,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    },
+    {
+     "name": "ncp",
+     "label": {
+      "en": "Noncentrality parameter",
+      "ja": "非中心度"
+     },
+     "symbol": "\\lambda",
+     "min": 0,
+     "max": 20,
+     "default": 0.0,
+     "step": 1
+    }
+   ]
+  },
+  {
+   "id": "gamma",
+   "files": [
+    "gamma.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Gamma distribution",
+    "ja": "ガンマ分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Gamma_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/ガンマ分布"
+   },
+   "formula": "f(x) = x^{k-1} \\frac{e^{-x/\\theta}}{\\Gamma(k)\\,\\theta^k}\n        \\ \\ \\ \\ \\mathrm{for\\ } x > 0",
+   "mean_str": "k\\theta",
+   "variance_str": "k\\theta^2",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "shape",
+     "label": {
+      "en": "Shape",
+      "ja": "形状"
+     },
+     "symbol": "k",
+     "min": 0,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    },
+    {
+     "name": "scale",
+     "label": {
+      "en": "Scale",
+      "ja": "尺度"
+     },
+     "symbol": "\\theta",
+     "min": 0,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    }
+   ]
+  },
+  {
+   "id": "cauchy",
+   "files": [
+    "cauchy.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Cauchy distribution",
+    "ja": "コーシー分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Cauchy_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/コーシー分布"
+   },
+   "formula": "\\begin{align}\n  f(x; x_0,\\gamma) &=\n  { 1 \\over \\pi } \\left[ { \\gamma \\over (x - x_0)^2 + \\gamma^2  } \\right]\n\\end{align}",
+   "mean_str": null,
+   "variance_str": null,
+   "range": {
+    "min": -100.0,
+    "max": 100.0,
+    "default": [
+     -10.0,
+     10.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "location",
+     "label": {
+      "en": "Location",
+      "ja": "位置"
+     },
+     "symbol": "x_0",
+     "min": -20,
+     "max": 20,
+     "default": 0.0,
+     "step": 2
+    },
+    {
+     "name": "scale",
+     "label": {
+      "en": "Scale",
+      "ja": "尺度"
+     },
+     "symbol": "\\gamma",
+     "min": 0,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    }
+   ]
+  },
+  {
+   "id": "exp_dist",
+   "files": [
+    "exp_dist.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Exponential distribution",
+    "ja": "指数分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Exponential_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/指数分布"
+   },
+   "formula": "f(x; \\lambda) = \\left\\{\n  \\begin{array}{ll}\n  \\lambda e^{-\\lambda x} & (x \\geq 0) \\\\ 0 & (x < 0)\n  \\end{array}\n  \\right.",
+   "mean_str": "\\frac{1}{\\lambda}",
+   "variance_str": "\\frac{1}{\\lambda^2}",
+   "range": {
+    "min": -10.0,
+    "max": 50.0,
+    "default": [
+     0.0,
+     5.0
+    ],
+    "step": 1.0
+   },
+   "params": [
+    {
+     "name": "rate",
+     "label": {
+      "en": "",
+      "ja": ""
+     },
+     "symbol": "\\lambda",
+     "min": 0,
+     "max": 20,
+     "default": 1.0,
+     "step": 0.2
+    }
+   ]
+  },
+  {
+   "id": "lnormal",
+   "files": [
+    "lnormal.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Log-normal distribution",
+    "ja": "対数正規分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Log-normal_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/対数正規分布"
+   },
+   "formula": "f(x) = \\frac{1}{\\sqrt{2\\pi} \\sigma x} e^{-\\frac{ (\\ln{x}-\\mu)^2}{2\\sigma^2} },\n  \\quad 0<x< \\infty",
+   "mean_str": "e^{\\mu+\\sigma^2/2}",
+   "variance_str": "e^{2\\mu+\\sigma^2}(e^{\\sigma^2}-1)",
+   "range": {
+    "min": 0.0,
+    "max": 200.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "meanlog",
+     "label": {
+      "en": "Mean Log",
+      "ja": "平均log"
+     },
+     "symbol": "\\mu",
+     "min": -30,
+     "max": 30,
+     "default": 0.0,
+     "step": 2
+    },
+    {
+     "name": "sdlog",
+     "label": {
+      "en": "Standard deviation Log",
+      "ja": "標準偏差log"
+     },
+     "symbol": "\\sigma",
+     "min": 0,
+     "max": 10,
+     "default": 1.0,
+     "step": 0.5
+    }
+   ]
+  },
+  {
+   "id": "t_dist",
+   "files": [
+    "t_dist.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Student's t-distribution",
+    "ja": "t分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Student%27s_t-distribution",
+    "ja": "https://ja.wikipedia.org/wiki/t分布"
+   },
+   "formula": "f(x) = \\frac{\\Gamma((\\nu+1)/2)}{\\sqrt{\\nu\\pi\\,}\\,\n  \\Gamma(\\nu/2)} (1+x^2/\\nu)^{-(\\nu+1)/2}",
+   "mean_str": "0",
+   "variance_str": "\\frac{\\nu}{\\nu-2}",
+   "range": {
+    "min": -100.0,
+    "max": 100.0,
+    "default": [
+     -10.0,
+     10.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "df",
+     "label": {
+      "en": "Degrees of freedom",
+      "ja": "自由度"
+     },
+     "symbol": "\\nu",
+     "min": 1,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    }
+   ]
+  },
+  {
+   "id": "nct",
+   "files": [
+    "nct.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Noncentral t-distribution",
+    "ja": "非心t分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Noncentral_t-distribution",
+    "ja": "https://ja.wikipedia.org/wiki/非心t分布"
+   },
+   "formula": "f(x) =\\frac{\\nu^{\\frac{\\nu}{2}}\n\\exp\\left (-\\frac{\\nu\\mu^2}{2(x^2+\\nu)} \\right )}\n{\\sqrt{\\pi}\\Gamma(\\frac{\\nu}{2})2^{\\frac{\\nu-1}{2}}(x^2+\\nu)^{\\frac{\\nu+1}{2}}}\n\\int_0^\\infty y^\\nu\\exp\\left (-\\frac{1}{2}\\left(y-\\frac{\\mu x}{\\sqrt{x^2+\\nu}}\n\\right)^2\\right ) dy",
+   "mean_str": "\\mu\\sqrt{\\frac{\\nu}{2}}\\frac{\\Gamma((\\nu-1)/2)}{\\Gamma(\\nu/2)}",
+   "variance_str": "\\frac{\\nu(1+\\mu^2)}{\\nu-2}-\\frac{\\mu^2\\nu}{2}\\left(\\frac{\\Gamma((\\nu-1)/2)}{\\Gamma(\\nu/2)}\\right)^2",
+   "range": {
+    "min": -100.0,
+    "max": 100.0,
+    "default": [
+     -10.0,
+     10.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "df",
+     "label": {
+      "en": "Degrees of freedom",
+      "ja": "自由度"
+     },
+     "symbol": "\\nu",
+     "min": 1,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    },
+    {
+     "name": "ncp",
+     "label": {
+      "en": "Noncentrality parameter",
+      "ja": "非中心度"
+     },
+     "symbol": "\\mu",
+     "min": 0,
+     "max": 20,
+     "default": 0.0,
+     "step": 1
+    }
+   ]
+  },
+  {
+   "id": "beta",
+   "files": [
+    "beta.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Beta distribution",
+    "ja": "ベータ分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Beta_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/ベータ分布"
+   },
+   "formula": "f(x)=\\frac{x^{\\alpha-1}(1-x)^{\\beta-1}}{B(\\alpha,\\beta)}",
+   "mean_str": "\\frac{\\alpha}{\\alpha+\\beta}",
+   "variance_str": "\\frac{\\alpha\\beta}{(\\alpha+\\beta)^2 (\\alpha+\\beta+1)}",
+   "range": {
+    "min": 0.0,
+    "max": 1.0,
+    "default": [
+     0.0,
+     1.0
+    ],
+    "step": 0.01
+   },
+   "params": [
+    {
+     "name": "shape1",
+     "label": {
+      "en": "Shape",
+      "ja": "形状"
+     },
+     "symbol": "\\alpha",
+     "min": 0,
+     "max": 20,
+     "default": 2.0,
+     "step": 1
+    },
+    {
+     "name": "shape2",
+     "label": {
+      "en": "Shape",
+      "ja": "形状"
+     },
+     "symbol": "\\beta",
+     "min": 0,
+     "max": 20,
+     "default": 2.0,
+     "step": 1
+    }
+   ]
+  },
+  {
+   "id": "ncbeta",
+   "files": [
+    "ncbeta_0.json",
+    "ncbeta_1.json",
+    "ncbeta_2.json",
+    "ncbeta_3.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Noncentral beta distribution",
+    "ja": "非心ベータ分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Noncentral_beta_distribution",
+    "ja": "https://en.wikipedia.org/wiki/Noncentral_beta_distribution"
+   },
+   "formula": "f(x) = \\sum_{j=0}^\\infty \\frac{1}{j!}\n\\left(\\frac{\\lambda}{2}\\right)^je^{-\\lambda/2}\n\\frac{x^{\\alpha+j-1}(1-x)^{\\beta-1}}{B(\\alpha+j,\\beta)}",
+   "mean_str": "\ne^{-\\frac{\\lambda}{2}}\n\\frac{\\alpha}{\\alpha+\\beta}\n{}_2F_2\\left(\\alpha+\\beta,\\alpha+1;\\alpha,\\alpha+\\beta+1;\\frac{\\lambda}{2}\n\\right)\n",
+   "variance_str": "\ne^{-\\frac{\\lambda}{2}}\n\\frac{\\alpha (\\alpha+1)}{(\\alpha+\\beta)(\\alpha+\\beta+1)}\n{}_2F_2\\left(\\alpha+\\beta,\\alpha+2;\\alpha,\\alpha+\\beta+2\n;\\frac{\\lambda}{2}\\right) - \\mu^2\n",
+   "range": {
+    "min": 0.0,
+    "max": 1.0,
+    "default": [
+     0.0,
+     1.0
+    ],
+    "step": 0.01
+   },
+   "params": [
+    {
+     "name": "shape1",
+     "label": {
+      "en": "Shape",
+      "ja": "形状"
+     },
+     "symbol": "\\alpha",
+     "min": 0,
+     "max": 20,
+     "default": 2.0,
+     "step": 2
+    },
+    {
+     "name": "shape2",
+     "label": {
+      "en": "Shape",
+      "ja": "形状"
+     },
+     "symbol": "\\beta",
+     "min": 0,
+     "max": 20,
+     "default": 2.0,
+     "step": 2
+    },
+    {
+     "name": "ncp",
+     "label": {
+      "en": "Noncentrality parameter",
+      "ja": "非中心度"
+     },
+     "symbol": "\\lambda",
+     "min": 0,
+     "max": 20,
+     "default": 0.0,
+     "step": 2
+    }
+   ]
+  },
+  {
+   "id": "unif",
+   "files": [
+    "unif.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Uniform distribution (continuous)",
+    "ja": "連続一様分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)",
+    "ja": "https://ja.wikipedia.org/wiki/連続一様分布"
+   },
+   "formula": "f(x)=\\begin{cases}\n\\frac{1}{b - a} & \\mathrm{for}\\ a \\le x \\le b, \\\\[8pt]\n0 & \\mathrm{for}\\ x<a\\ \\mathrm{or}\\ x>b\n\\end{cases}",
+   "mean_str": "\\frac{1}{2}(a+b)",
+   "variance_str": "\\frac{1}{12}(b-a)^2",
+   "range": {
+    "min": -50.0,
+    "max": 50.0,
+    "default": [
+     0.0,
+     1.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "min",
+     "label": {
+      "en": "Min",
+      "ja": "最小値"
+     },
+     "symbol": "a",
+     "min": -50,
+     "max": 50,
+     "default": 0.0,
+     "step": 5
+    },
+    {
+     "name": "max",
+     "label": {
+      "en": "Max",
+      "ja": "最大値"
+     },
+     "symbol": "b",
+     "min": -50,
+     "max": 50,
+     "default": 1.0,
+     "step": 5
+    }
+   ]
+  },
+  {
+   "id": "logis",
+   "files": [
+    "logis.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Logistic distribution",
+    "ja": "ロジスティック分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Logistic_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/ロジスティック分布"
+   },
+   "formula": "f(x;\\mu,s) = \\frac{\\exp(-\\frac{x-\\mu}{s})}{s(1+\\exp(-\\frac{x-\\mu}{s}))^2}",
+   "mean_str": "\\mu",
+   "variance_str": "\\frac{\\pi^2}{3} s^2",
+   "range": {
+    "min": -100.0,
+    "max": 100.0,
+    "default": [
+     -10.0,
+     10.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "location",
+     "label": {
+      "en": "Location",
+      "ja": "位置"
+     },
+     "symbol": "\\mu",
+     "min": -20,
+     "max": 20,
+     "default": 0.0,
+     "step": 2
+    },
+    {
+     "name": "scale",
+     "label": {
+      "en": "Scale",
+      "ja": "尺度"
+     },
+     "symbol": "s",
+     "min": 0,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    }
+   ]
+  },
+  {
+   "id": "weibull",
+   "files": [
+    "weibull.json"
+   ],
+   "type": "continuous",
+   "name": {
+    "en": "Weibull distribution",
+    "ja": "ワイブル分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Weibull_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/ワイブル分布"
+   },
+   "formula": "f(t)=\\frac{m}{\\eta}\\left(\\frac{t}{\\eta}\\right)^{m-1}\n\\exp \\left\\{-\\left(\\frac{t}{\\eta}\\right)^m\\right\\}",
+   "mean_str": "\\eta \\Gamma(1+1/m)",
+   "variance_str": "\\eta^2\\left[\\Gamma\\left(1+\\frac{2}{m}\\right) - \\left(\\Gamma\\left(1+\\frac{1}{m}\\right)\\right)^2\\right]",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 0.5
+   },
+   "params": [
+    {
+     "name": "shape",
+     "label": {
+      "en": "Shape",
+      "ja": "形状"
+     },
+     "symbol": "m",
+     "min": 0.1,
+     "max": 19.1,
+     "default": 1.0,
+     "step": 1.0
+    },
+    {
+     "name": "scale",
+     "label": {
+      "en": "Scale",
+      "ja": "尺度"
+     },
+     "symbol": "\\eta",
+     "min": 0.1,
+     "max": 19.1,
+     "default": 1.0,
+     "step": 1.0
+    }
+   ]
+  },
+  {
+   "id": "geom",
+   "files": [
+    "geom.json"
+   ],
+   "type": "discrete",
+   "name": {
+    "en": "Geometric distribution",
+    "ja": "幾何分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Geometric_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/幾何分布"
+   },
+   "formula": "Pr(X = k) = p(1-p)^{k}",
+   "mean_str": "\\frac{1-p}{p}",
+   "variance_str": "\\frac{1-p}{p^2}",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 1.0
+   },
+   "params": [
+    {
+     "name": "prob",
+     "label": {
+      "en": "Probability of successful trial",
+      "ja": "成功確率"
+     },
+     "symbol": "p",
+     "min": 0,
+     "max": 1,
+     "default": 0.5,
+     "step": 0.01
+    }
+   ]
+  },
+  {
+   "id": "hyper",
+   "files": [
+    "hyper_0.json",
+    "hyper_1.json",
+    "hyper_2.json",
+    "hyper_3.json",
+    "hyper_4.json",
+    "hyper_5.json",
+    "hyper_6.json"
+   ],
+   "type": "discrete",
+   "name": {
+    "en": "Hypergeometric distribution",
+    "ja": "超幾何分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Hypergeometric_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/超幾何分布"
+   },
+   "formula": "\\operatorname{P}(X=x)\n= \\frac{\\binom{m}{x}\\binom{n}{k-x}}{\\binom{m+n}{k}}",
+   "mean_str": "\\frac{km}{m+n}",
+   "variance_str": "\\frac{kmn(m+n-k)}{(m+n)^2 (m+n-1)}",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     50.0
+    ],
+    "step": 1.0
+   },
+   "params": [
+    {
+     "name": "m",
+     "label": {
+      "en": "Number of white balls in the urn",
+      "ja": "成功状態の数"
+     },
+     "symbol": "m",
+     "min": 0,
+     "max": 50,
+     "default": 50.0,
+     "step": 1
+    },
+    {
+     "name": "n",
+     "label": {
+      "en": "Number of black balls in the urn",
+      "ja": "失敗状態の数"
+     },
+     "symbol": "n",
+     "min": 0,
+     "max": 50,
+     "default": 50.0,
+     "step": 1
+    },
+    {
+     "name": "k",
+     "label": {
+      "en": "Number of balls drawn from the urn",
+      "ja": "取り出す数"
+     },
+     "symbol": "k",
+     "min": 0,
+     "max": 50,
+     "default": 50.0,
+     "step": 1
+    }
+   ]
+  },
+  {
+   "id": "binom",
+   "files": [
+    "binom.json"
+   ],
+   "type": "discrete",
+   "name": {
+    "en": "Binomial distribution",
+    "ja": "二項分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Binomial_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/二項分布"
+   },
+   "formula": "P[X=k]={n\\choose k}p^k(1-p)^{n-k}\\quad\\text{for}\\ k=0,1,2,\\dots,n",
+   "mean_str": "np",
+   "variance_str": "np(1-p)",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 1.0
+   },
+   "params": [
+    {
+     "name": "size",
+     "label": {
+      "en": "Number of trials",
+      "ja": "試行回数"
+     },
+     "symbol": "n",
+     "min": 0,
+     "max": 40,
+     "default": 10.0,
+     "step": 1
+    },
+    {
+     "name": "prob",
+     "label": {
+      "en": "Probability of successful trial",
+      "ja": "成功確率"
+     },
+     "symbol": "p",
+     "min": 0,
+     "max": 1,
+     "default": 0.5,
+     "step": 0.01
+    }
+   ]
+  },
+  {
+   "id": "nbinom",
+   "files": [
+    "nbinom.json"
+   ],
+   "type": "discrete",
+   "name": {
+    "en": "Negative binomial distribution",
+    "ja": "負の二項分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Negative_binomial_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/負の二項分布"
+   },
+   "formula": "f(x)=P(X=x) = {x-1 \\choose r-1} p^r (1-p)^{x-r}",
+   "mean_str": "\\frac{r}{p}",
+   "variance_str": "\\frac{r(1-p)}{p^2}",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 1.0
+   },
+   "params": [
+    {
+     "name": "size",
+     "label": {
+      "en": "target for number of successful trials",
+      "ja": "成功をする前に失敗した試行回数"
+     },
+     "symbol": "r",
+     "min": 1,
+     "max": 20,
+     "default": 1.0,
+     "step": 1
+    },
+    {
+     "name": "prob",
+     "label": {
+      "en": "Probability of successful trial",
+      "ja": "成功確率"
+     },
+     "symbol": "p",
+     "min": 0,
+     "max": 1,
+     "default": 0.5,
+     "step": 0.01
+    }
+   ]
+  },
+  {
+   "id": "pois",
+   "files": [
+    "pois.json"
+   ],
+   "type": "discrete",
+   "name": {
+    "en": "Poisson distribution",
+    "ja": "ポアソン分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Poisson_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/ポアソン分布"
+   },
+   "formula": "P(X=k)=\\frac{\\lambda^k e^{-\\lambda}}{k!}",
+   "mean_str": "\\lambda",
+   "variance_str": "\\lambda",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 1.0
+   },
+   "params": [
+    {
+     "name": "lambda",
+     "label": {
+      "en": "",
+      "ja": ""
+     },
+     "symbol": "\\lambda",
+     "min": 1,
+     "max": 20,
+     "default": 1.0,
+     "step": 0.5
+    }
+   ]
+  },
+  {
+   "id": "dunif",
+   "files": [
+    "dunif.json"
+   ],
+   "type": "discrete",
+   "name": {
+    "en": "Discrete uniform distribution",
+    "ja": "離散一様分布"
+   },
+   "wiki": {
+    "en": "https://en.wikipedia.org/wiki/Discrete_uniform_distribution",
+    "ja": "https://ja.wikipedia.org/wiki/離散一様分布"
+   },
+   "formula": "f(x)=\\begin{cases}\n\\frac{1}{n} & \\mathrm{for}\\ a \\le x \\le b, \\\\[8pt]\n0 & \\mathrm{for}\\ x<a\\ \\mathrm{or}\\ x>b\n\\end{cases}",
+   "mean_str": "\\frac{a+b}{2}",
+   "variance_str": "\\frac{(b-a+1)^2 -1}{12}",
+   "range": {
+    "min": 0.0,
+    "max": 100.0,
+    "default": [
+     0.0,
+     20.0
+    ],
+    "step": 1.0
+   },
+   "params": [
+    {
+     "name": "min",
+     "label": {
+      "en": "Min",
+      "ja": "最小値"
+     },
+     "symbol": "a",
+     "min": 0,
+     "max": 100,
+     "default": 0.0,
+     "step": 1
+    },
+    {
+     "name": "max",
+     "label": {
+      "en": "Max",
+      "ja": "最大値"
+     },
+     "symbol": "b",
+     "min": 0,
+     "max": 100,
+     "default": 20.0,
+     "step": 1
+    }
+   ]
+  }
+ ],
+ "i18n": {
+  "about.md": "about_ja.md",
+  "This link stores the current state of this application.": "このURLはアプリの状態を保持したものです。",
+  "Bookmarked application link": "ブックマーク用リンク",
+  "Dismiss": "閉じる",
+  "Press Ctrl-C to copy.": "Ctrl-C を押してコピーできます。",
+  "Press ⌘-C to copy.": "⌘-C を押してコピーできます。",
+  "mean": "期待値",
+  "Mean": "期待値",
+  "variance": "分散",
+  "Variance": "分散",
+  "Standard deviation": "標準偏差",
+  "Shape": "形状",
+  "Scale": "尺度",
+  "Degrees of freedom": "自由度",
+  "Noncentrality parameter": "非中心度",
+  "Location": "位置",
+  "Mean Log": "平均log",
+  "Standard deviation Log": "標準偏差log",
+  "Probability of successful trial": "成功確率",
+  "Number of trials": "試行回数",
+  "target for number of successful trials": "成功をする前に失敗した試行回数",
+  "Number of white balls in the urn": "成功状態の数",
+  "Number of black balls in the urn": "失敗状態の数",
+  "Number of balls drawn from the urn": "取り出す数",
+  "Min": "最小値",
+  "Max": "最大値",
+  "Undefined": "定義されない",
+  "Plot": "プロット",
+  "variance(∞ if 1 <= ν <= 2)": "分散 (自由度が2以下のときは∞)",
+  "Probability Distributions Viewer": "確率分布 Viewer",
+  "Reference": "参考",
+  "Parameters": "パラメータ",
+  "Probability density function (PDF)": "確率密度関数",
+  "Probability mass function (PMF)": "確率関数",
+  "Cumulative distribution function (CDF)": "累積分布関数",
+  "Range": "範囲",
+  "Continuous distributions": "連続分布",
+  "Normal distribution": "正規分布",
+  "https://en.wikipedia.org/wiki/Normal_distribution": "https://ja.wikipedia.org/wiki/正規分布",
+  "Erlang distribution": "アーラン分布",
+  "https://en.wikipedia.org/wiki/Erlang_distribution": "https://ja.wikipedia.org/wiki/アーラン分布",
+  "F-distribution": "F分布",
+  "https://en.wikipedia.org/wiki/F-distribution": "https://ja.wikipedia.org/wiki/F分布",
+  "Noncentral F-distribution": "非心F分布",
+  "https://en.wikipedia.org/wiki/Noncentral_F-distribution": "https://en.wikipedia.org/wiki/Noncentral_F-distribution",
+  "Chi-squared distribution": "カイ二乗分布",
+  "https://en.wikipedia.org/wiki/Chi-squared_distribution": "https://ja.wikipedia.org/wiki/カイ二乗分布",
+  "Noncentral chi-squared distribution": "非心カイ二乗分布",
+  "https://en.wikipedia.org/wiki/Noncentral_chi-squared_distribution": "https://ja.wikipedia.org/wiki/非心カイ二乗分布",
+  "Gamma distribution": "ガンマ分布",
+  "https://en.wikipedia.org/wiki/Gamma_distribution": "https://ja.wikipedia.org/wiki/ガンマ分布",
+  "Cauchy distribution": "コーシー分布",
+  "https://en.wikipedia.org/wiki/Cauchy_distribution": "https://ja.wikipedia.org/wiki/コーシー分布",
+  "Exponential distribution": "指数分布",
+  "https://en.wikipedia.org/wiki/Exponential_distribution": "https://ja.wikipedia.org/wiki/指数分布",
+  "Log-normal distribution": "対数正規分布",
+  "https://en.wikipedia.org/wiki/Log-normal_distribution": "https://ja.wikipedia.org/wiki/対数正規分布",
+  "Student's t-distribution": "t分布",
+  "https://en.wikipedia.org/wiki/Student%27s_t-distribution": "https://ja.wikipedia.org/wiki/t分布",
+  "Noncentral t-distribution": "非心t分布",
+  "https://en.wikipedia.org/wiki/Noncentral_t-distribution": "https://ja.wikipedia.org/wiki/非心t分布",
+  "Beta distribution": "ベータ分布",
+  "https://en.wikipedia.org/wiki/Beta_distribution": "https://ja.wikipedia.org/wiki/ベータ分布",
+  "Noncentral beta distribution": "非心ベータ分布",
+  "https://en.wikipedia.org/wiki/Noncentral_beta_distribution": "https://en.wikipedia.org/wiki/Noncentral_beta_distribution",
+  "Uniform distribution (continuous)": "連続一様分布",
+  "https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)": "https://ja.wikipedia.org/wiki/連続一様分布",
+  "Logistic distribution": "ロジスティック分布",
+  "https://en.wikipedia.org/wiki/Logistic_distribution": "https://ja.wikipedia.org/wiki/ロジスティック分布",
+  "Weibull distribution": "ワイブル分布",
+  "https://en.wikipedia.org/wiki/Weibull_distribution": "https://ja.wikipedia.org/wiki/ワイブル分布",
+  "Discrete distributions": "離散分布",
+  "Geometric distribution": "幾何分布",
+  "https://en.wikipedia.org/wiki/Geometric_distribution": "https://ja.wikipedia.org/wiki/幾何分布",
+  "Hypergeometric distribution": "超幾何分布",
+  "https://en.wikipedia.org/wiki/Hypergeometric_distribution": "https://ja.wikipedia.org/wiki/超幾何分布",
+  "Binomial distribution": "二項分布",
+  "https://en.wikipedia.org/wiki/Binomial_distribution": "https://ja.wikipedia.org/wiki/二項分布",
+  "Negative binomial distribution": "負の二項分布",
+  "https://en.wikipedia.org/wiki/Negative_binomial_distribution": "https://ja.wikipedia.org/wiki/負の二項分布",
+  "Poisson distribution": "ポアソン分布",
+  "https://en.wikipedia.org/wiki/Poisson_distribution": "https://ja.wikipedia.org/wiki/ポアソン分布",
+  "Discrete uniform distribution": "離散一様分布",
+  "https://en.wikipedia.org/wiki/Discrete_uniform_distribution": "https://ja.wikipedia.org/wiki/離散一様分布"
+ }
+}
