@@ -365,7 +365,7 @@ generate <- function(dist_id, def) {
   out <- list(
     dist = dist_id,
     type = def$type,
-    params = names(grids),
+    params = I(names(grids)), # I() で要素が1つでも配列のまま出力させる
     values = grids,
     combos = combos
   )
