@@ -29,6 +29,15 @@ function distMeta(id) {
   return META.distributions.find((d) => d.id === id);
 }
 
+// GA4: SPA内の画面遷移（分布切替・About・言語切替）を page_view として送る
+function trackPageView() {
+  if (typeof window.gtag !== "function") return;
+  window.gtag("event", "page_view", {
+    page_title: document.title,
+    page_location: location.href,
+  });
+}
+
 function fmt(v) {
   if (v === null || v === undefined) return "-";
   const r = Math.round(v * 1000) / 1000;
@@ -429,6 +438,7 @@ async function selectDist(id) {
   renderView();
   renderDist();
   syncURL();
+  trackPageView();
 }
 
 async function init() {
@@ -441,6 +451,7 @@ async function init() {
   renderView();
   renderDist();
   syncURL();
+  trackPageView();
 
   $("lang-select").addEventListener("change", (e) => setLang(e.target.value));
   initSidebarResizer();
@@ -448,6 +459,7 @@ async function init() {
     state.view = state.view === "about" ? "dist" : "about";
     renderView();
     if (state.view === "dist") { renderDist(); syncURL(); }
+    trackPageView();
   });
 
   let resizeTimer = null;
@@ -501,6 +513,7 @@ function setLang(lang) {
   renderView();
   if (state.view === "dist") renderDist();
   syncURL();
+  trackPageView();
 }
 
 document.addEventListener("DOMContentLoaded", init);
