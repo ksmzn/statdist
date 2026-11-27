@@ -15,6 +15,8 @@ const state = {
 
 let META = null;
 const distCache = new Map();
+// 元サイトで期待値・分散のボックスが全幅表示だった分布
+const WIDE_STATS = new Set(["ncf", "nct", "ncbeta", "weibull"]);
 
 const $ = (id) => document.getElementById(id);
 
@@ -192,8 +194,7 @@ function renderNav() {
 
 function renderHeader() {
   $("site-title").textContent = t("Probability Distributions Viewer");
-  $("lang-ja").classList.toggle("active", state.lang === "ja");
-  $("lang-en").classList.toggle("active", state.lang === "en");
+  $("lang-select").value = state.lang;
   document.documentElement.lang = state.lang;
 }
 
@@ -201,9 +202,10 @@ function renderControls() {
   const meta = distMeta(state.distId);
   const data = distCache.get(state.distId);
 
-  $("legend-params").textContent = t("Parameters");
-  $("legend-range").textContent = t("Range");
-  $("legend-mode").textContent = t("Plot");
+  $("params-title").textContent = t("Parameters");
+  $("plot-title").textContent = t("Plot");
+  $("range-group-label").textContent = t("Range");
+  $("ref-label").textContent = t("Reference");
   $("mean-label").textContent = t("Mean");
   $("var-label").textContent = t("Variance");
 
@@ -213,6 +215,7 @@ function renderControls() {
   const densLabel = meta.type === "continuous"
     ? t("Probability density function (PDF)")
     : t("Probability mass function (PMF)");
+  $("formula-title").textContent = densLabel;
   const cdfLabel = t("Cumulative distribution function (CDF)");
   for (const [value, label] of [["pdf", densLabel], ["cdf", cdfLabel]]) {
     const lab = document.createElement("label");
@@ -379,9 +382,18 @@ function renderChartAndStats() {
   });
 
   if (combo) {
-    $("mean-value").textContent = fmtStat(combo.mean);
-    $("var-value").textContent = fmtStat(combo.var);
+    renderStat($("mean-formula"), meta.mean_str, combo.mean);
+    renderStat($("var-formula"), meta.variance_str, combo.var);
   }
+}
+
+// 期待値・分散のボックス: 元サイト同様「数式 = 値」を大きく表示する
+function renderStat(el, str, value) {
+  if (value === null || value === undefined || str === null || str === undefined) {
+    el.textContent = t("Undefined");
+    return;
+  }
+  tex(el, str + " = " + fmtStat(value));
 }
 
 function renderDist() {
@@ -392,8 +404,7 @@ function renderDist() {
   if (wiki) { wikiEl.href = wiki; wikiEl.hidden = false; }
   else wikiEl.hidden = true;
   tex($("formula-box"), meta.formula);
-  tex($("mean-formula"), meta.mean_str);
-  tex($("var-formula"), meta.variance_str);
+  $("stats-row").classList.toggle("wide", WIDE_STATS.has(state.distId));
   renderControls();
   renderChartAndStats();
 }
@@ -431,8 +442,7 @@ async function init() {
   renderDist();
   syncURL();
 
-  $("lang-ja").addEventListener("click", () => setLang("ja"));
-  $("lang-en").addEventListener("click", () => setLang("en"));
+  $("lang-select").addEventListener("change", (e) => setLang(e.target.value));
   $("btn-about").addEventListener("click", () => {
     state.view = state.view === "about" ? "dist" : "about";
     renderView();

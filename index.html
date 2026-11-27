@@ -13,51 +13,57 @@
   <div class="site-title" id="site-title">Probability Distributions Viewer</div>
   <div class="header-actions">
     <button id="btn-about" class="header-btn" type="button">About</button>
-    <span class="lang-switch">
-      <button id="lang-ja" class="header-btn" type="button">日本語</button>
-      <button id="lang-en" class="header-btn" type="button">English</button>
-    </span>
+    <select id="lang-select" class="lang-select" aria-label="Language">
+      <option value="ja">日本語</option>
+      <option value="en">English</option>
+    </select>
   </div>
 </header>
 <div class="layout">
   <nav class="sidebar" id="sidebar" aria-label="Distributions"></nav>
   <main class="content">
     <section id="view-dist">
-      <div class="dist-head">
-        <h1 id="dist-name"></h1>
-        <a id="dist-wiki" class="wiki-link" href="#" target="_blank" rel="noopener">Wikipedia</a>
-      </div>
-      <div class="formula-box" id="formula-box"></div>
-      <div class="stats-row">
-        <div class="stat-box">
-          <div class="stat-label" id="mean-label">Mean</div>
-          <div class="stat-formula" id="mean-formula"></div>
-          <div class="stat-value" id="mean-value">-</div>
+      <div class="row">
+        <div class="box col-5">
+          <h2 class="box-title" id="dist-name"></h2>
+          <div class="box-body">
+            <span id="ref-label">Reference</span> :
+            <a id="dist-wiki" href="#" target="_blank" rel="noopener">Wikipedia</a>
+          </div>
         </div>
-        <div class="stat-box">
-          <div class="stat-label" id="var-label">Variance</div>
-          <div class="stat-formula" id="var-formula"></div>
-          <div class="stat-value" id="var-value">-</div>
+        <div class="box col-7">
+          <h2 class="box-title" id="formula-title"></h2>
+          <div class="box-body formula-body" id="formula-box"></div>
         </div>
       </div>
-      <div class="controls">
-        <fieldset class="control-group">
-          <legend id="legend-mode">Plot</legend>
-          <div id="mode-radios" class="mode-radios"></div>
-        </fieldset>
-        <fieldset class="control-group">
-          <legend id="legend-params">Parameters</legend>
-          <div id="param-controls"></div>
-        </fieldset>
-        <fieldset class="control-group">
-          <legend id="legend-range">Range</legend>
-          <div id="range-controls"></div>
-        </fieldset>
+      <div class="row">
+        <div class="box box-solid col-5">
+          <h2 class="box-title" id="params-title">Parameters</h2>
+          <div class="box-body">
+            <div id="mode-radios" class="mode-radios"></div>
+            <div class="group-label" id="range-group-label">Range</div>
+            <div id="range-controls"></div>
+            <div id="param-controls"></div>
+          </div>
+        </div>
+        <div class="box box-solid col-7">
+          <h2 class="box-title" id="plot-title">Plot</h2>
+          <div class="box-body chart-wrap" id="chart-wrap">
+            <svg id="chart" role="img" aria-label="Distribution chart"></svg>
+            <div class="tooltip" id="tooltip" hidden></div>
+            <div class="chart-loading" id="chart-loading" hidden>Loading…</div>
+          </div>
+        </div>
       </div>
-      <div class="chart-wrap" id="chart-wrap">
-        <svg id="chart" role="img" aria-label="Distribution chart"></svg>
-        <div class="tooltip" id="tooltip" hidden></div>
-        <div class="chart-loading" id="chart-loading" hidden>Loading…</div>
+      <div class="row stats-row" id="stats-row">
+        <div class="value-box">
+          <div class="value-main" id="mean-formula">-</div>
+          <div class="value-sub" id="mean-label">Mean</div>
+        </div>
+        <div class="value-box">
+          <div class="value-main" id="var-formula">-</div>
+          <div class="value-sub" id="var-label">Variance</div>
+        </div>
       </div>
     </section>
     <section id="view-about" hidden>

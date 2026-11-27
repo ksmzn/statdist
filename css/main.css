@@ -44,11 +44,22 @@ body {
 .header-btn:hover { background: rgba(255, 255, 255, 0.15); }
 .header-btn.active { background: #fff; color: var(--accent-dark); font-weight: 600; }
 
+.lang-select {
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  background: transparent;
+  color: #fff;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.lang-select option { color: var(--text); background: #fff; }
+
 .layout { display: flex; align-items: stretch; min-height: calc(100vh - 49px); }
 
 .sidebar {
-  width: 230px;
-  flex: 0 0 230px;
+  width: 300px;
+  flex: 0 0 300px;
   background: var(--panel);
   border-right: 1px solid var(--border);
   padding: 10px 0;
@@ -80,45 +91,52 @@ body {
 
 .content { flex: 1 1 auto; padding: 18px 22px 30px; min-width: 0; }
 
-.dist-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
-.dist-head h1 { font-size: 24px; margin: 0; }
-.wiki-link { font-size: 13px; color: var(--accent-dark); }
+/* 元サイト（shinydashboard）のボックス配置に合わせたレイアウト */
+.row { display: flex; gap: 20px; margin-bottom: 20px; }
+.col-5 { flex: 5 1 0; min-width: 0; }
+.col-7 { flex: 7 1 0; min-width: 0; }
 
-.formula-box {
-  margin-top: 12px;
+.box {
   background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  border-top: 3px solid var(--accent);
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.box-title {
+  margin: 0;
+  padding: 10px 12px;
+  font-size: 17px;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f3f5;
+}
+.box-body { padding: 10px 12px; font-size: 14px; }
+.box-body a { color: var(--accent-dark); }
+
+.box-solid .box-title {
+  background: var(--accent);
+  color: #fff;
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+}
+
+.formula-body { overflow-x: auto; font-size: 15px; min-height: 24px; }
+
+.group-label { margin-top: 12px; font-size: 14px; }
+
+.stats-row { gap: 20px; }
+.value-box {
+  flex: 1 1 0;
+  min-width: 0;
+  background: #0073b7;
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   padding: 14px 16px;
   overflow-x: auto;
-  font-size: 15px;
 }
-
-.stats-row { display: flex; gap: 14px; margin-top: 14px; flex-wrap: wrap; }
-
-.stat-box {
-  flex: 1 1 220px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
-  border-radius: 6px;
-  padding: 10px 14px;
-}
-.stat-label { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
-.stat-formula { margin-top: 4px; min-height: 20px; overflow-x: auto; }
-.stat-value { font-size: 26px; font-weight: 600; margin-top: 2px; }
-
-.controls { display: flex; gap: 14px; margin-top: 14px; flex-wrap: wrap; }
-
-.control-group {
-  flex: 1 1 260px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 10px 14px 12px;
-  margin: 0;
-}
-.control-group legend { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; padding: 0 4px; }
+.stats-row.wide { flex-direction: column; }
+.value-main { font-size: 26px; font-weight: 600; min-height: 34px; }
+.value-sub { font-size: 13px; margin-top: 2px; }
 
 .mode-radios label { display: block; padding: 3px 0; font-size: 14px; cursor: pointer; }
 
@@ -128,14 +146,7 @@ body {
 .slider-value { font-variant-numeric: tabular-nums; font-weight: 600; }
 .slider-row input[type="range"] { width: 100%; margin: 4px 0 0; accent-color: var(--accent); }
 
-.chart-wrap {
-  position: relative;
-  margin-top: 14px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 8px;
-}
+.chart-wrap { position: relative; }
 #chart { display: block; width: 100%; height: 420px; }
 
 .tooltip {
@@ -183,5 +194,7 @@ body {
   .nav-group-title { padding: 4px 6px; white-space: nowrap; }
   .nav-item { width: auto; white-space: nowrap; padding: 6px 8px; border-radius: 4px; }
   .content { padding: 14px 12px 24px; }
+  .row { flex-direction: column; gap: 14px; margin-bottom: 14px; }
+  .stats-row { flex-direction: column; }
   #chart { height: 320px; }
 }
