@@ -443,6 +443,7 @@ async function init() {
   syncURL();
 
   $("lang-select").addEventListener("change", (e) => setLang(e.target.value));
+  initSidebarResizer();
   $("btn-about").addEventListener("click", () => {
     state.view = state.view === "about" ? "dist" : "about";
     renderView();
@@ -455,6 +456,41 @@ async function init() {
     resizeTimer = setTimeout(() => {
       if (state.view === "dist") renderChartAndStats();
     }, 150);
+  });
+}
+
+// 左メニューの幅をドラッグで変更できるようにする（幅は保存する）
+function initSidebarResizer() {
+  const sidebar = $("sidebar");
+  const resizer = $("sidebar-resizer");
+  if (!sidebar || !resizer) return;
+  const MIN = 180, MAX = 560;
+  try {
+    const saved = parseInt(localStorage.getItem("statdist.sidebarWidth") || "", 10);
+    if (saved >= MIN && saved <= MAX && window.innerWidth > 760) {
+      sidebar.style.width = saved + "px";
+    }
+  } catch (e) { /* 保存できない環境では既定幅のまま */ }
+
+  resizer.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
+    resizer.classList.add("dragging");
+    resizer.setPointerCapture(e.pointerId);
+    document.body.style.userSelect = "none";
+    const move = (ev) => {
+      const w = Math.min(MAX, Math.max(MIN, ev.clientX - sidebar.getBoundingClientRect().left));
+      sidebar.style.width = w + "px";
+    };
+    const up = (ev) => {
+      resizer.classList.remove("dragging");
+      document.body.style.userSelect = "";
+      resizer.removeEventListener("pointermove", move);
+      resizer.removeEventListener("pointerup", up);
+      try { localStorage.setItem("statdist.sidebarWidth", String(parseInt(sidebar.style.width, 10))); } catch (err) {}
+      if (state.view === "dist") renderChartAndStats();
+    };
+    resizer.addEventListener("pointermove", move);
+    resizer.addEventListener("pointerup", up);
   });
 }
 

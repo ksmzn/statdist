@@ -59,12 +59,22 @@ body {
 
 .sidebar {
   width: 300px;
-  flex: 0 0 300px;
+  flex: 0 0 auto;
   background: var(--panel);
   border-right: 1px solid var(--border);
   padding: 10px 0;
   overflow-y: auto;
 }
+
+.sidebar-resizer {
+  flex: 0 0 6px;
+  margin-left: -3px;
+  cursor: col-resize;
+  background: transparent;
+  z-index: 5;
+  touch-action: none;
+}
+.sidebar-resizer:hover, .sidebar-resizer.dragging { background: rgba(60, 141, 188, 0.35); }
 
 .nav-group-title {
   padding: 10px 16px 4px;
@@ -119,7 +129,7 @@ body {
   border-radius: 3px 3px 0 0;
 }
 
-.formula-body { overflow-x: auto; font-size: 15px; min-height: 24px; }
+.formula-body { overflow-x: auto; font-size: 15px; min-height: 24px; -webkit-overflow-scrolling: touch; }
 
 .group-label { margin-top: 12px; font-size: 14px; }
 
@@ -135,6 +145,7 @@ body {
   overflow-x: auto;
 }
 .stats-row.wide { flex-direction: column; }
+.stats-row.wide .value-box { flex: none; width: 100%; }
 .value-main { font-size: 26px; font-weight: 600; min-height: 34px; }
 .value-sub { font-size: 13px; margin-top: 2px; }
 
@@ -182,7 +193,7 @@ body {
 @media (max-width: 760px) {
   .layout { flex-direction: column; }
   .sidebar {
-    width: 100%;
+    width: 100% !important;
     flex: none;
     display: flex;
     overflow-x: auto;
@@ -196,5 +207,8 @@ body {
   .content { padding: 14px 12px 24px; }
   .row { flex-direction: column; gap: 14px; margin-bottom: 14px; }
   .stats-row { flex-direction: column; }
+  .stats-row .value-box { flex: none; width: 100%; }
+  .sidebar-resizer { display: none; }
+  .formula-body { font-size: 13px; }
   #chart { height: 320px; }
 }

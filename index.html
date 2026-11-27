@@ -21,6 +21,7 @@
 </header>
 <div class="layout">
   <nav class="sidebar" id="sidebar" aria-label="Distributions"></nav>
+  <div class="sidebar-resizer" id="sidebar-resizer"></div>
   <main class="content">
     <section id="view-dist">
       <div class="row">
@@ -75,43 +76,7 @@
         平均値・分散の値も知ることができます。</p>
         <p>URLがそのまま現在の状態を表します。URLをコピーすれば、シェアすることも可能です。</p>
         <p><strong>左メニュー</strong> からお好きな確率分布を選んでください。</p>
-        <h3>参考文献</h3>
-        <p>このアプリを作る際に参考にしたページは以下です。特に、作成当時はShinyの日本語情報が少ないなか、<a href="https://twitter.com/hoxo_m" target="_blank">@hoxo_m</a>さんの記事やコードはとても参考になりました。<a href="https://twitter.com/hoxo_m" target="_blank">@hoxo_m</a>さん、ありがとうございました。</p>
-        <h4>Shiny</h4>
-        <ul>
-          <li><a href="http://shiny.rstudio.com/tutorial/">Shiny Official Tutorial</a></li>
-          <li><a href="https://shiny.rstudio.com/articles/bookmarking-state.html">Shiny - Bookmarking state</a></li>
-          <li><a href="https://shiny.rstudio.com/articles/advanced-bookmarking.html">Shiny - Advanced bookmarking</a></li>
-          <li><a href="https://shiny.rstudio.com/articles/modules.html">Shiny - Modularizing Shiny app code</a></li>
-        </ul>
-        <h4>shinydashboard</h4>
-        <ul>
-          <li><a href="https://rstudio.github.io/shinydashboard/">shinydashboard</a></li>
-          <li><a href="https://rstudio.github.io/shinydashboard/behavior.html">Shiny Dashboard Behavior</a></li>
-        </ul>
-        <h4>shiny.i18n</h4>
-        <ul>
-          <li><a href="https://github.com/Appsilon/shiny.i18n">GitHub - Appsilon/shiny.i18n</a></li>
-        </ul>
-        <h4>JavaScript</h4>
-        <ul>
-          <li><a href="http://nvd3.org/examples/line.html">Simple Line Chart - NVD3.js</a></li>
-        </ul>
-        <h4>Tutorial &amp; Example</h4>
-        <ul>
-          <li><a href="http://d.hatena.ne.jp/hoxo_m/20140731/p1">ボケて(bokete)のネタを全自動で流し見できるサイト作った - ほくそ笑む</a></li>
-          <li><a href="http://qiita.com/hoxo_m/items/c8365117f3444fb51df4">RStudio Shiny チュートリアル レッスン1 ようこそ Shiny へ - Qiita</a></li>
-        </ul>
-        <h3>拙ブログ</h3>
-        <ul>
-          <li><a href="http://ksmzn.hatenablog.com/entry/statdist-shiny">Shinyで確率分布を動かして遊べるページ作った</a></li>
-          <li><a href="http://ksmzn.hatenablog.com/entry/shiny-nvd3-js-nuru">Shinyで作った確率分布を動かせるページを, NVD3.jsでヌルヌルでインタラクティブなグラフにしました。そしてShinyでD3.jsを使う方法３つ。</a></li>
-          <li><a href="http://ksmzn.hatenablog.com/entry/shiny-dashboard-english">確率分布を学ぶアプリを、shinydashboard を使って新しくしてみた &amp; 英訳していただきました。</a></li>
-          <li><a href="http://ksmzn.hatenablog.com/entry/degitalocean-shiny-docker">Dockerを使ってDigitalOceanにShinyアプリを公開する</a></li>
-          <li><a href="http://ksmzn.hatenablog.com/entry/shiny-i18n">shiny.i18nパッケージでshinyを多言語対応</a></li>
-          <li><a href="http://ksmzn.hatenablog.com/entry/shiny-module">「ShinyModule」で中規模Shinyアプリをキレイにする</a></li>
-        </ul>
-      </div>
+        </div>
       <div class="about-body" id="about-en" hidden>
         <h2>Shiny web app for live demonstration of probability distributions</h2>
         <p>This web app enables visual inspection of various probability distributions commonly used in statistics.
@@ -121,37 +86,7 @@
         <ul>
           <li>The original code is available at: <a href="https://github.com/ksmzn/ProbabilityDistributionsViewer">https://github.com/ksmzn/ProbabilityDistributionsViewer</a></li>
         </ul>
-        <h3>References</h3>
-        <h4>Shiny</h4>
-        <ul>
-          <li><a href="http://shiny.rstudio.com/tutorial/">Shiny Official Tutorial</a></li>
-          <li><a href="https://shiny.rstudio.com/articles/bookmarking-state.html">Shiny - Bookmarking state</a></li>
-          <li><a href="https://shiny.rstudio.com/articles/advanced-bookmarking.html">Shiny - Advanced bookmarking</a></li>
-          <li><a href="https://shiny.rstudio.com/articles/modules.html">Shiny - Modularizing Shiny app code</a></li>
-        </ul>
-        <h4>shinydashboard</h4>
-        <ul>
-          <li><a href="https://rstudio.github.io/shinydashboard/">shinydashboard</a></li>
-          <li><a href="https://rstudio.github.io/shinydashboard/behavior.html">Shiny Dashboard Behavior</a></li>
-        </ul>
-        <h4>shiny.i18n</h4>
-        <ul>
-          <li><a href="https://github.com/Appsilon/shiny.i18n">GitHub - Appsilon/shiny.i18n</a></li>
-        </ul>
-        <h4>JavaScript</h4>
-        <ul>
-          <li><a href="http://nvd3.org/examples/line.html">Simple Line Chart - NVD3.js</a></li>
-        </ul>
-        <h4>Tutorial &amp; Example</h4>
-        <ul>
-          <li><a href="http://d.hatena.ne.jp/hoxo_m/20140731/p1">ボケて(bokete)のネタを全自動で流し見できるサイト作った - ほくそ笑む</a> (in Japanese)</li>
-          <li><a href="http://qiita.com/hoxo_m/items/c8365117f3444fb51df4">RStudio Shiny チュートリアル レッスン1 ようこそ Shiny へ - Qiita</a> (in Japanese)</li>
-        </ul>
-        <h3>Author's blog article (in Japanese)</h3>
-        <ul>
-          <li><a href="http://ksmzn.hatenablog.com/entry/statdist-shiny">Shinyで確率分布を動かして遊べるページ作った</a></li>
-        </ul>
-      </div>
+        </div>
     </section>
   </main>
 </div>
